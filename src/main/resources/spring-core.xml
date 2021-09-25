@@ -43,16 +43,27 @@
         </tx:attributes>
     </tx:advice>
 
-    <!--sqlSessionFactory Bean-->
-    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sessionFactory">
-        <!--指定数据源-->
+    <!--Mybatis Plus配置-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.jhomew.mapper"/>
+    </bean>
+    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!--指定mybatis配置文件-->
-        <property name="configLocation" value="classpath:mybatis-config.xml"/>
-        <!--指定mapper 映射地址-->
-        <property name="mapperLocations" value="classpath:com/jhomew/mapper/*.xml"/>
     </bean>
 
-    <!--将mapper接口交给spring 管理-->
-    <mybatis:scan base-package="com.jhomew.mapper"/>
+
+
+<!--    以下为注释掉的Mybatis 配置-->
+
+<!--    &lt;!&ndash;sqlSessionFactory Bean&ndash;&gt;-->
+<!--    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sessionFactory">-->
+<!--        &lt;!&ndash;指定数据源&ndash;&gt;-->
+<!--        <property name="dataSource" ref="dataSource"/>-->
+<!--        &lt;!&ndash;指定mybatis配置文件&ndash;&gt;-->
+<!--        <property name="configLocation" value="classpath:mybatis-config.xml"/>-->
+<!--        &lt;!&ndash;指定mapper 映射地址&ndash;&gt;-->
+<!--        <property name="mapperLocations" value="classpath:com/jhomew/mapper/*.xml"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash;将mapper接口交给spring 管理&ndash;&gt;-->
+<!--    <mybatis:scan base-package="com.jhomew.mapper"/>-->
 </beans>
