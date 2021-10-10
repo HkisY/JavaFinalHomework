@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+    <!--识别不到service可解注释-->
+    <!--<context:component-scan base-package="com.jhomew.service"/>-->
+    <!--扫描除controller以外的包-->
+    <context:component-scan base-package="com.jhomew">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!--引入外部属性字段-->
+    <!--数据库配置字段，注意修改-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!--创建Durid数据源-->
+    <bean class="com.alibaba.druid.pool.DruidDataSource" id="dataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <!--库名-->
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--事务配置-->
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="dataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
+
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="transactionCut" expression="execution(* .*.*(..)"/>-->
+<!--    </aop:config>-->
+    <tx:advice id="advice" transaction-manager="dataSourceTransactionManager">
+        <tx:attributes>
+            <tx:method name="add*"/>
+            <tx:method name="update*"/>
+            <tx:method name="delete*"/>
+            <tx:method name="get*" read-only="true" propagation="SUPPORTS"/>
+            <tx:method name="query" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--Mybatis Plus配置-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.jhomew.mapper"/>
+    </bean>
+    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+
+<!--    以下为注释掉的Mybatis 配置-->
+
+<!--    &lt;!&ndash;sqlSessionFactory Bean&ndash;&gt;-->
+<!--    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sessionFactory">-->
+<!--        &lt;!&ndash;指定数据源&ndash;&gt;-->
+<!--        <property name="dataSource" ref="dataSource"/>-->
+<!--        &lt;!&ndash;指定mybatis配置文件&ndash;&gt;-->
+<!--        <property name="configLocation" value="classpath:mybatis-config.xml"/>-->
+<!--        &lt;!&ndash;指定mapper 映射地址&ndash;&gt;-->
+<!--        <property name="mapperLocations" value="classpath:com/jhomew/mapper/*.xml"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash;将mapper接口交给spring 管理&ndash;&gt;-->
+<!--    <mybatis:scan base-package="com.jhomew.mapper"/>-->
+</beans>
