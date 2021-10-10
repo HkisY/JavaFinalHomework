@@ -11,6 +11,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-core.xml")
-public class BaseTest {
+public abstract class BaseTest {
     //凡是测试类均继承此类
 }
