@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="JavaHomework:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/JavaHomework_war_exploded</output-path>
+  <artifact type="exploded-war" name="Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Web_exploded</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="JavaHomework/web/Web" />
       <element id="directory" name="WEB-INF">
@@ -8,6 +8,9 @@
           <element id="module-output" name="JavaHomework" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.12.3" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.12.3" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.12.3" />
           <element id="library" level="project" name="Maven: com.baomidou:mybatis-plus:3.4.3.4" />
           <element id="library" level="project" name="Maven: com.baomidou:mybatis-plus-extension:3.4.3.4" />
           <element id="library" level="project" name="Maven: com.baomidou:mybatis-plus-core:3.4.3.4" />
@@ -38,10 +41,7 @@
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.26" />
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.1.21" />
-          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.20" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.12.3" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.12.3" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.12.3" />
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.22" />
         </element>
       </element>
     </root>
