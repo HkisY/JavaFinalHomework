@@ -4,6 +4,7 @@ package com.jhomew.controller;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.jhomew.model.exception.LoginAndRegisterException;
 import com.jhomew.model.request.LoginRequest;
+import com.jhomew.model.response.LoginResponse;
 import com.jhomew.model.result.ResultModel;
 import com.jhomew.model.result.login.LoginModelRequest;
 import com.jhomew.service.businessService.loginService.LoginService;
@@ -38,7 +39,8 @@ public class UserController {
     private LoginService loginService;
 
     @PostMapping("/login")
-    public ResultModel<String> login(@RequestBody LoginRequest request){
+    @ResponseBody
+    public ResultModel<LoginResponse> login(@RequestBody LoginRequest request){
         if (Objects.isNull(request)|| StringUtils.isBlank(request.getUsername())){
             try {
                 LoginAndRegisterException exception = new LoginAndRegisterException("用户名为空");
@@ -46,8 +48,11 @@ public class UserController {
                 ResultModel.error(e.getMessage());
             }
         }
-
-        return loginService.login(null);
+        //若后台接收前端参数需要多余填充数据，则进行实际赋值,如下注释行
+        LoginModelRequest loginModelRequest = new LoginModelRequest();
+        BeanUtils.copyProperties(request,loginModelRequest);
+        //loginModelRequest.setImg("asdsadsda");
+        return loginService.login(loginModelRequest);
     }
 
 //    @PostMapping("/register")

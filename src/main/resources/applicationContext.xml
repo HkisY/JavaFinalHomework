@@ -8,7 +8,7 @@
     <!--此配置文件用于一次性注入ssm配置 -->
     <import resource="spring-core.xml"/>
     <import resource="spring-mvc.xml"/>
-<!--    <import resource="spring-redis.xml"/>-->
+    <import resource="spring-redis.xml"/>
 
 
 </beans>

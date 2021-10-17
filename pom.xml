@@ -20,7 +20,6 @@
             <artifactId>jedis</artifactId>
             <version>RELEASE</version>
         </dependency>
-
         <!-- spring-data-redis -->
         <dependency>
             <groupId>org.springframework.data</groupId>
