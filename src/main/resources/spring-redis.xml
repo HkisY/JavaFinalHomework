@@ -1,0 +1,53 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xmlns:cache="http://www.springframework.org/schema/cache"-->
+<!--       xmlns:context="http://www.springframework.org/schema/context"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+<!--        http://www.springframework.org/schema/beans/spring-beans.xsd-->
+<!--        http://www.springframework.org/schema/cache-->
+<!--        http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">-->
+
+
+<!--    &lt;!&ndash; 连接池基本参数配置&ndash;&gt;-->
+<!--    <context:property-placeholder location="classpath:redis.properties"-->
+<!--                                  ignore-unresolvable="true" />-->
+
+<!--    &lt;!&ndash; redis连接池 &ndash;&gt;-->
+<!--    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">-->
+<!--        <property name="maxTotal" value="${redis.maxActive}" />-->
+<!--        <property name="maxIdle" value="${redis.maxIdle}" />-->
+<!--        <property name="testOnBorrow" value="${redis.testOnBorrow}" />-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; 连接池配置，类似数据库连接池 &ndash;&gt;-->
+<!--    <bean id="jedisPool"-->
+<!--          class="redis.clients.jedis.JedisPool">-->
+<!--        <constructor-arg name="poolConfig" value=""/>-->
+<!--        <constructor-arg name="host" value="127.0.0.1"/>-->
+<!--        <constructor-arg name="port" value="6379"/>-->
+<!--        <constructor-arg name="timeout" value="2000"/>-->
+<!--    </bean>-->
+
+<!--&lt;!&ndash;    &lt;!&ndash;redis操作模版,使用该对象可以操作redis  &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" >&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="connectionFactory" ref="jedisConnectionFactory" />&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash;如果不配置Serializer，那么存储的时候缺省使用String，如果用User类型存储，那么会提示错误User can't cast to String！！  &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="keySerializer" >&ndash;&gt;-->
+<!--&lt;!&ndash;            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />&ndash;&gt;-->
+<!--&lt;!&ndash;        </property>&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="valueSerializer" >&ndash;&gt;-->
+<!--&lt;!&ndash;            <bean class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer" />&ndash;&gt;-->
+<!--&lt;!&ndash;        </property>&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="hashKeySerializer">&ndash;&gt;-->
+<!--&lt;!&ndash;            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        </property>&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="hashValueSerializer">&ndash;&gt;-->
+<!--&lt;!&ndash;            <bean class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        </property>&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash;开启事务  &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="enableTransactionSupport" value="true"/>&ndash;&gt;-->
+<!--&lt;!&ndash;    </bean >&ndash;&gt;-->
+
+
+<!--</beans>-->
