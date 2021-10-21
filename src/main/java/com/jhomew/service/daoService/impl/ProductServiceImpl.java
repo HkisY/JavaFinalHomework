@@ -1,9 +1,9 @@
 package com.jhomew.service.daoService.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jhomew.entity.Product;
 import com.jhomew.mapper.ProductMapper;
 import com.jhomew.service.daoService.ProductService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

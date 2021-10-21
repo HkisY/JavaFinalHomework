@@ -1,18 +1,29 @@
 package com.jhomew.model.result;
 
 
+import lombok.Data;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Hxin
  * @version 1.0
  * @since 2021/10/16 8:29 下午
  */
-
+@Data
 public class ResultModel<T> implements Serializable {
+    /**
+     * 成功标志
+     */
+    private Boolean success;
+    /**
+     * 时间戳
+     */
+    private long timestamp = System.currentTimeMillis();
 
     /**
-     *信息
+     * 失败信息
      */
     private String message;
     /**
@@ -21,55 +32,59 @@ public class ResultModel<T> implements Serializable {
     private Integer code;
 
     /**
-     *数据信息
+     * 数据信息
      */
     private T data;
 
-    private static final ResultModel<String> resultModel = new ResultModel<>();
+    private static final ResultModel resultModel = new ResultModel();
 
-    public static ResultModel<String> success(){
-        return null;
-    }
-    public static ResultModel<String> success(String message){
-        resultModel.setMessage(message);
+    public static ResultModel success() {
+        resultModel.setSuccess(true);
+        //code : 200 成功
+        resultModel.setCode(200);
+        resultModel.setTimestamp(new Date().getTime());
+        resultModel.setMessage("success");
         resultModel.setData(null);
-        resultModel.setCode(500);
-        return resultModel;
-    }
-    public static ResultModel<String> success(String message,Object data){
-        return null;
-    }
-
-    public static ResultModel<String> error(String message){
-        resultModel.setMessage(message);
-        resultModel.setData(null);
-        resultModel.setCode(500);
         return resultModel;
     }
 
-
-
-    public String getMessage() {
-        return message;
+    public static ResultModel success(String message) {
+        resultModel.setSuccess(true);
+        //code : 200 成功
+        resultModel.setCode(200);
+        resultModel.setTimestamp(new Date().getTime());
+        resultModel.setMessage(message);
+        resultModel.setData(null);
+        return resultModel;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public static ResultModel success(String message, Object obj) {
+        resultModel.setSuccess(true);
+        //code : 200 成功
+        resultModel.setCode(200);
+        resultModel.setTimestamp(new Date().getTime());
+        resultModel.setMessage(message);
+        resultModel.setData(obj);
+        return resultModel;
     }
 
-    public Integer getCode() {
-        return code;
+    public static ResultModel error() {
+        resultModel.setSuccess(false);
+        //code : 500 失败
+        resultModel.setCode(500);
+        resultModel.setTimestamp(new Date().getTime());
+        resultModel.setMessage("error");
+        resultModel.setData(null);
+        return resultModel;
     }
 
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
+    public static ResultModel error(String message) {
+        resultModel.setSuccess(false);
+        //code : 500 失败
+        resultModel.setCode(500);
+        resultModel.setTimestamp(new Date().getTime());
+        resultModel.setMessage(message);
+        resultModel.setData(null);
+        return resultModel;
     }
 }

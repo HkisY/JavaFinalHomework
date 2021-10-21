@@ -20,7 +20,6 @@
             <artifactId>jedis</artifactId>
             <version>RELEASE</version>
         </dependency>
-
         <!-- spring-data-redis -->
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -70,19 +69,19 @@
 
         <!--DAO层框架修改为mybatis plus 下列为传统mybatis-->
 
-<!--        &lt;!&ndash; Mybatis 核心包依赖 &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.mybatis</groupId>-->
-<!--            <artifactId>mybatis</artifactId>-->
-<!--            <version>3.5.7</version>-->
-<!--        </dependency>-->
+        <!--        &lt;!&ndash; Mybatis 核心包依赖 &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.mybatis</groupId>-->
+        <!--            <artifactId>mybatis</artifactId>-->
+        <!--            <version>3.5.7</version>-->
+        <!--        </dependency>-->
 
-<!--        &lt;!&ndash; mybatis-spring适配器 &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.mybatis</groupId>-->
-<!--            <artifactId>mybatis-spring</artifactId>-->
-<!--            <version>2.0.5</version>-->
-<!--        </dependency>-->
+        <!--        &lt;!&ndash; mybatis-spring适配器 &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.mybatis</groupId>-->
+        <!--            <artifactId>mybatis-spring</artifactId>-->
+        <!--            <version>2.0.5</version>-->
+        <!--        </dependency>-->
 
         <!--单元测试servlet 依赖-->
         <dependency>

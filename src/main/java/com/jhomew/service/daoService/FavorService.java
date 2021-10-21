@@ -1,7 +1,7 @@
 package com.jhomew.service.daoService;
 
-import com.jhomew.entity.Favor;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jhomew.entity.Favor;
 
 /**
  * <p>

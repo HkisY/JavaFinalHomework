@@ -1,7 +1,7 @@
 package com.jhomew.service.daoService;
 
-import com.jhomew.entity.Product;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jhomew.entity.Product;
 
 import java.util.List;
 

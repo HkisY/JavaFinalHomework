@@ -1,32 +1,23 @@
-package com.jhomew.entity;
+package com.jhomew.model.response;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
 
 /**
- * <p>
- *
- * </p>
- *
  * @author Hxin
- * @since 2021-10-10
+ * @version 1.0
+ * @since 2021/10/17 8:19 下午
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class User implements Serializable {
+public class LoginResponse implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 主键
      */
-    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
@@ -57,19 +48,30 @@ public class User implements Serializable {
     /**
      * 创建时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    private Date createTime;
+    private LocalDate createTime;
 
     /**
      * 最后一次更新时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    private Date updateTime;
+    private LocalDate updateTime;
 
     /**
      * 标记，1表示存在，0表示删除
      */
     private Integer state;
 
+    /**
+     * 假设这里有后台需要添加的数据
+     * 头像图片
+     */
+    private String img;
 
+    private String token;
+
+    /**
+     * 前端检测参数
+     */
+    private int frontState;
+
+    private String message;
 }

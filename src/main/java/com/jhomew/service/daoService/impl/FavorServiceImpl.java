@@ -1,9 +1,9 @@
 package com.jhomew.service.daoService.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jhomew.entity.Favor;
 import com.jhomew.mapper.FavorMapper;
 import com.jhomew.service.daoService.FavorService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

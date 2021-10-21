@@ -1,10 +1,8 @@
 package com.jhomew.model.request;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.io.Serializable;
 
 /**
  * @author Hxin
@@ -12,9 +10,9 @@ import java.time.LocalDate;
  * @since 2021/10/16 8:39 下午
  */
 @Data
-public class LoginRequest {
+public class LoginRequest implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     private String username;
 

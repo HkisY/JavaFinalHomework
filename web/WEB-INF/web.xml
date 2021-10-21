@@ -15,8 +15,6 @@
     </context-param>
 
 
-
-
     <!--servlet调度器-->
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>
@@ -64,8 +62,8 @@
         <servlet-name>dispatcherServlet</servlet-name>
     </filter-mapping>
 
-<!--    &lt;!&ndash;启动初始web页面&ndash;&gt;-->
-<!--    <welcome-file-list>-->
-<!--        <welcome-file>/WEB-INF/JSP/Welcome.jsp</welcome-file>-->
-<!--    </welcome-file-list>-->
+    <!--    &lt;!&ndash;启动初始web页面&ndash;&gt;-->
+    <!--    <welcome-file-list>-->
+    <!--        <welcome-file>/WEB-INF/JSP/Welcome.jsp</welcome-file>-->
+    <!--    </welcome-file-list>-->
 </web-app>
