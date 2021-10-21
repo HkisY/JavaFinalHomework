@@ -11,7 +11,7 @@
 
     <!-- 连接池基本参数配置-->
     <context:property-placeholder location="classpath:redis.properties"
-                                  ignore-unresolvable="true" />
+                                  ignore-unresolvable="true"/>
 
     <!-- redis连接池 -->
     <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
@@ -24,14 +24,14 @@
     </bean>
 
     <!--redis操作模版,使用该对象可以操作redis  -->
-    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" >
-        <property name="connectionFactory" ref="jedisConnectionFactory" />
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="jedisConnectionFactory"/>
         <!--如果不配置Serializer，那么存储的时候缺省使用String，如果用User类型存储，那么会提示错误User can't cast to String！！  -->
-        <property name="keySerializer" >
-            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+        <property name="keySerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
         </property>
-        <property name="valueSerializer" >
-            <bean class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer" />
+        <property name="valueSerializer">
+            <bean class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer"/>
         </property>
         <property name="hashKeySerializer">
             <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
@@ -41,7 +41,7 @@
         </property>
         <!--开启事务  -->
         <property name="enableTransactionSupport" value="true"/>
-    </bean >
+    </bean>
 
 
 </beans>
