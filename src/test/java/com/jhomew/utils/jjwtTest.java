@@ -27,6 +27,6 @@ public class jjwtTest extends BaseTest {
                 .signWith(SignatureAlgorithm.HS256,"hxinJava");//签名
         //.claim存放键值对
         String token = jwtBuilder.compact();
-        logger.debug("---------------------"+token);
+        logger.debug("---------------------阿斯达"+token);
     }
 }

@@ -5,5 +5,5 @@ package com.jhomew.model.constant;
  * @version 1.0
  * @since 2021/10/16 8:26 下午
  */
-public class CookieConstant {
+public interface CookieConstant {
 }

@@ -1,6 +1,7 @@
-package com.jhomew.model.response;
+package com.jhomew.DTO;
 
-import lombok.Data;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -9,10 +10,9 @@ import java.util.Date;
 /**
  * @author Hxin
  * @version 1.0
- * @since 2021/10/17 8:19 下午
+ * @since 2021/10/24 1:55 下午
  */
-@Data
-public class LoginResponse implements Serializable {
+public class RegisterUserDTO implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -61,19 +61,4 @@ public class LoginResponse implements Serializable {
      */
     private Integer state;
 
-    /**
-     * 假设这里有后台需要添加的数据
-     * 头像图片
-     */
-    private String img;
-
-    private String token;
-
-    /**
-     * 前端检测参数
-     * 1 success 0 fail
-     */
-    private int frontState;
-
-    private String message;
 }

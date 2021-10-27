@@ -67,6 +67,15 @@ public class ResultModel<T> implements Serializable {
         resultModel.setData(obj);
         return resultModel;
     }
+    public static ResultModel success(Object obj){
+        resultModel.setSuccess(true);
+        //code : 200 成功
+        resultModel.setCode(200);
+        resultModel.setTimestamp(new Date().getTime());
+        resultModel.setMessage("success");
+        resultModel.setData(obj);
+        return resultModel;
+    }
 
     public static ResultModel error(){
         resultModel.setSuccess(false);

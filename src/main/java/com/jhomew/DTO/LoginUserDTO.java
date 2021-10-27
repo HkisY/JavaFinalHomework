@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * @author Hxin
@@ -49,12 +50,12 @@ public class LoginUserDTO implements Serializable {
     /**
      * 创建时间
      */
-    private LocalDate createTime;
+    private Date createTime;
 
     /**
      * 最后一次更新时间
      */
-    private LocalDate updateTime;
+    private Date updateTime;
 
     /**
      * 标记，1表示存在，0表示删除
