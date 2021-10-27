@@ -1,9 +1,9 @@
 package com.jhomew.model.response;
 
+
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -14,7 +14,7 @@ import java.util.Date;
 @Data
 public class LoginResponse implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * 主键
@@ -54,6 +54,7 @@ public class LoginResponse implements Serializable {
     /**
      * 最后一次更新时间
      */
+
     private Date updateTime;
 
     /**

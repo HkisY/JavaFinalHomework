@@ -18,27 +18,27 @@ public class RedisTest extends BaseTest {
     public static Logger logger = LoggerFactory.getLogger(jjwtTest.class);
 
     @Test
-    public void redisTest(){
+    public void redisTest() {
         //Connecting to Redis server on localhost
         Jedis jedis = new Jedis();
         System.out.println("Connection to server sucessfully");
         //check whether server is running or not
-        System.out.println("Server is running: "+jedis.ping());
+        System.out.println("Server is running: " + jedis.ping());
     }
 
     @Test
-    public void redisStringTest(){
+    public void redisStringTest() {
         //Connecting to Redis server on localhost
         Jedis jedis = new Jedis();
         System.out.println("Connection to server sucessfully");
         //set the data in redis string
         jedis.set("tutorial-name", "Redis tutorial");
         // Get the stored data and print it
-        System.out.println("Stored string in redis:: "+ jedis.get("tutorial-name"));
+        System.out.println("Stored string in redis:: " + jedis.get("tutorial-name"));
     }
 
     @Test
-    public void redisListTest(){
+    public void redisListTest() {
         //Connecting to Redis server on localhost
         Jedis jedis = new Jedis();
         System.out.println("Connection to server sucessfully");
@@ -50,15 +50,15 @@ public class RedisTest extends BaseTest {
 
         // Get the stored data and print it
         //storage rule of lrange is a que,  parameter  start is the que head index ,stop is the que rear
-        List<String> list = jedis.lrange("tutorial-list", 1 ,3);
+        List<String> list = jedis.lrange("tutorial-list", 1, 3);
 
-        for(int i = 0; i<list.size(); i++) {
-            System.out.println("Stored string in redis:: "+list.get(i));
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println("Stored string in redis:: " + list.get(i));
         }
     }
 
     @Test
-    public void redisKeyTest(){
+    public void redisKeyTest() {
         //Connecting to Redis server on localhost
         Jedis jedis = new Jedis();
         System.out.println("Connection to server sucessfully");

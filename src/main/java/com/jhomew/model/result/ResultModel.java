@@ -38,7 +38,7 @@ public class ResultModel<T> implements Serializable {
 
     private static final ResultModel resultModel = new ResultModel();
 
-    public static ResultModel success(){
+    public static ResultModel success() {
         resultModel.setSuccess(true);
         //code : 200 成功
         resultModel.setCode(200);
@@ -48,7 +48,7 @@ public class ResultModel<T> implements Serializable {
         return resultModel;
     }
 
-    public static ResultModel success(String message){
+    public static ResultModel success(String message) {
         resultModel.setSuccess(true);
         //code : 200 成功
         resultModel.setCode(200);
@@ -58,7 +58,7 @@ public class ResultModel<T> implements Serializable {
         return resultModel;
     }
 
-    public static ResultModel success(String message,Object obj){
+    public static ResultModel success(String message, Object obj) {
         resultModel.setSuccess(true);
         //code : 200 成功
         resultModel.setCode(200);
@@ -77,7 +77,7 @@ public class ResultModel<T> implements Serializable {
         return resultModel;
     }
 
-    public static ResultModel error(){
+    public static ResultModel error() {
         resultModel.setSuccess(false);
         //code : 500 失败
         resultModel.setCode(500);
@@ -87,7 +87,7 @@ public class ResultModel<T> implements Serializable {
         return resultModel;
     }
 
-    public static ResultModel error(String message){
+    public static ResultModel error(String message) {
         resultModel.setSuccess(false);
         //code : 500 失败
         resultModel.setCode(500);

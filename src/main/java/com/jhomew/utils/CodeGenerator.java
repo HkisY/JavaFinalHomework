@@ -33,6 +33,7 @@ public class CodeGenerator {
         }
         throw new MybatisPlusException("请输入正确的" + tip + "！");
     }
+
     public static void main(String[] args) {
         //创建generator对象
         AutoGenerator autoGenerator = new AutoGenerator();

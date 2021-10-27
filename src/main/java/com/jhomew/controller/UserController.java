@@ -2,6 +2,8 @@ package com.jhomew.controller;
 
 
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.jhomew.entity.User;
+import com.jhomew.entity.User;
 import com.jhomew.model.exception.LoginAndRegisterException;
 import com.jhomew.model.request.LoginRequest;
 import com.jhomew.model.request.RegisterRequest;
@@ -12,15 +14,19 @@ import com.jhomew.model.result.login.LoginModelRequest;
 import com.jhomew.model.result.login.RegisterModelRequest;
 import com.jhomew.service.businessService.loginService.LoginService;
 import com.jhomew.service.daoService.UserService;
+import com.mysql.cj.xdevapi.JsonArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -116,6 +122,102 @@ public class UserController {
         BeanUtils.copyProperties(request, registerRequest);
         registerRequest.setCreateTime(new Date());
         return loginService.register(registerRequest);
+    }
+
+
+    @RequestMapping("/list")
+    @ResponseBody
+    public List<User> list() {
+        return service.list();
+    }
+
+    @PostMapping("/create")
+    @ResponseBody
+    public String create(@RequestBody User user) {
+        boolean flag = service.save(user);
+        String jsonArray = "";
+        if (flag) {
+            jsonArray = "" +
+                    "{\n" +
+                    "            \"code\": 20000, \"data\": \"success\"\n" +
+                    "        } ";
+        } else {
+            jsonArray = "" +
+                    "{\n" +
+                    "            \"code\": -1, \"data\": \"false\"\n" +
+                    "        } ";
+        }
+
+        System.out.println(jsonArray);
+
+        return jsonArray;
+    }
+
+    @PostMapping("/update")
+    @ResponseBody
+    public String update(@RequestBody User user) {
+        boolean flag = service.updateById(user);
+        String jsonArray = "";
+        if (flag) {
+            jsonArray = "" +
+                    "{\n" +
+                    "            \"code\": 20000, \"data\": \"success\"\n" +
+                    "        } ";
+        } else {
+            jsonArray = "" +
+                    "{\n" +
+                    "            \"code\": -1, \"data\": \"false\"\n" +
+                    "        } ";
+        }
+
+        System.out.println(jsonArray);
+
+        return jsonArray;
+    }
+
+    /**
+     * 通过id删除数据
+     *
+     * @param id
+     * @return
+     */
+    @PostMapping("/change")
+    @ResponseBody
+    public String deleteById(@RequestParam(name = "id") String id) {
+        System.out.println(id);
+        boolean flag = service.changeStateById(id);
+        String jsonArray = "";
+        if (flag) {
+            jsonArray = "" +
+                    "{\n" +
+                    "            \"code\": 20000, \"data\": \"success\"\n" +
+                    "        } ";
+        } else {
+            jsonArray = "" +
+                    "{\n" +
+                    "            \"code\": -1, \"data\": \"false\"\n" +
+                    "        } ";
+        }
+
+        System.out.println(jsonArray);
+
+        return jsonArray;
+    }
+
+
+    /**
+     * 搜索功能，未完成
+     *
+     * @param username 用户名
+     * @return
+     */
+    @GetMapping("/search")
+    @ResponseBody
+    @Nullable
+    public User searchByUsername(@RequestParam(name = "username") String username) {
+        System.out.println(username);
+        User user = new User();
+        return Objects.equals(user.getUsername(), "") ? null : user;
     }
 }
 

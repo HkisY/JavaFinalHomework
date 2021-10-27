@@ -52,7 +52,7 @@ public class LoginServiceImpl implements LoginService {
         //此实体按标准应该封装为DTO，Emmmmm想了想 太繁琐了。我们直接在这里进行业务处理吧
         //以下对DTO操作 仅是演示其作用
         User one = userService.getOne(queryWrapper);
-        if (Objects.isNull(one)) {
+        if (Objects.isNull(one)){
             return ResultModel.error("无用户名");
         }
         LoginUserDTO loginUserDTO = new LoginUserDTO();

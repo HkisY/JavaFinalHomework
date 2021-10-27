@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class RedisUtil {
     /**
      * 向redis中存储数据
+     *
      * @param redisTemplate
      * @param redisKey
      * @param obj
@@ -20,7 +21,7 @@ public class RedisUtil {
     public static void save(RedisTemplate redisTemplate, String redisKey, Object obj) {
         //TODO 操作检查
         //此处暂不进行检查，操作的时候注意传正确的参数
-        redisTemplate.opsForValue().set(redisKey,obj);
+        redisTemplate.opsForValue().set(redisKey, obj);
     }
 
     /**

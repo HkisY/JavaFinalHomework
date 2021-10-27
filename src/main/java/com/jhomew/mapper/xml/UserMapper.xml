@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhomew.mapper.UserMapper">
+    <update id="deleteById">
+        UPDATE `user` SET state= if(state=1,0,1) WHERE id=#{id}
+    </update>
+
+    <select id="searchByName">
+        SELECT * from user WHERE username  = #{username}
+    </select>
 
 </mapper>
