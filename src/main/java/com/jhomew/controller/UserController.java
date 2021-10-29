@@ -3,8 +3,6 @@ package com.jhomew.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.jhomew.entity.User;
-import com.jhomew.entity.User;
-import com.jhomew.model.exception.LoginAndRegisterException;
 import com.jhomew.model.request.LoginRequest;
 import com.jhomew.model.request.RegisterRequest;
 import com.jhomew.model.response.LoginResponse;
@@ -14,12 +12,10 @@ import com.jhomew.model.result.login.LoginModelRequest;
 import com.jhomew.model.result.login.RegisterModelRequest;
 import com.jhomew.service.businessService.loginService.LoginService;
 import com.jhomew.service.daoService.UserService;
-import com.mysql.cj.xdevapi.JsonArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.Nullable;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +27,7 @@ import java.util.Objects;
 
 /**
  * <p>
- * 前端控制器
+ * 用户前端控制器
  * </p>
  *
  * @author Hxin

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 
 /**
  * <p>
- * 前端控制器
+ * 购物车前端控制器
  * </p>
  *
  * @author Hxin
