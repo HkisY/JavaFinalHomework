@@ -111,10 +111,12 @@ public class UserController {
         LoginModelRequest loginModelRequest = new LoginModelRequest();
         BeanUtils.copyProperties(request, loginModelRequest);
         //loginModelRequest.setImg("asdsadsda");
+        //与merge方法冲突，原因见下面merge方法注释：可以通过分包解决
+
         ResultModel<LoginResponse> resultModel = loginService.login(loginModelRequest);
+        /*单纯登录功能上述代码已实现(在发现merge方法冲突后并不是)*/
         //向后端传参cart_token && login_token
         CartMergeRequest cartMergeRequest = new CartMergeRequest();
-
         cartMergeRequest.setLoginToken(resultModel.getData().getToken());
         Cookie[] cookies = httpServletRequest.getCookies();
         if (Objects.nonNull(cookies)&&cookies.length>0){
@@ -126,10 +128,11 @@ public class UserController {
             }
         }
         //调用购物车的合并接口
+        //ResultModel 为静态方法仅有一个实例化，故此处进行merge方法后会使login的正常流程ResultModel数据缺失
         cartOperateService.merge(cartMergeRequest);
         //购物车在登录后要合并，到时候传参从cookie变为JWT token 故此处删除cookie
-
-        return resultModel;
+        //merge冲突原因此处重新进行赋值操作
+        return loginService.login(loginModelRequest);
     }
 
     /**

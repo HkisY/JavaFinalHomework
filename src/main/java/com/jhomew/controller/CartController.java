@@ -31,8 +31,7 @@ import java.util.Objects;
  * 购物车前端控制器
  * </p>
  *
- * @author Hxin
- * @since 2021-10-10
+ * @author Lee
  */
 @Controller
 @RequestMapping("//cart")
@@ -101,7 +100,7 @@ public class CartController {
      */
     @GetMapping("/detail")
     @ResponseBody
-    public ResultModel<List<CartDetailResponse>> cartDetail(@RequestBody AddCartRequest request,
+    public ResultModel<List<CartDetailResponse>> cartDetail(AddCartRequest request,
                                                             HttpServletRequest servletRequest) {
         try {
             if (Objects.isNull(request)) {
