@@ -1,10 +1,13 @@
 package com.jhomew.service.daoService.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jhomew.entity.Product;
 import com.jhomew.mapper.ProductMapper;
 import com.jhomew.service.daoService.ProductService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +19,16 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> implements ProductService {
+    @Autowired
+    protected ProductMapper mapper;
 
+    /**
+     * 查询最新的9条商品记录
+     *
+     * @return 商品列表
+     */
+    @Override
+    public List<Product> ListByDate() {
+        return mapper.ListByDate();
+    }
 }

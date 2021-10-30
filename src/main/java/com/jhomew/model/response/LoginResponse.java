@@ -1,6 +1,5 @@
 package com.jhomew.model.response;
 
-
 import lombok.Data;
 
 import java.io.Serializable;

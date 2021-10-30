@@ -1,7 +1,7 @@
 package com.jhomew.mapper;
 
-import com.jhomew.entity.PayInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.jhomew.entity.PayInfo;
 
 /**
  * <p>

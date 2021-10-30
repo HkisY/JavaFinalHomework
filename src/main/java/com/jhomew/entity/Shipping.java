@@ -1,17 +1,13 @@
 package com.jhomew.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-
-import java.sql.Date;
-import java.sql.Date;
-
 import com.baomidou.mybatisplus.annotation.TableId;
-
-import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * <p>

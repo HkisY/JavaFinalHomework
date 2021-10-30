@@ -1,17 +1,13 @@
 package com.jhomew.entity;
 
-import java.math.BigDecimal;
-
 import com.baomidou.mybatisplus.annotation.IdType;
-
-import java.time.LocalDate;
-
 import com.baomidou.mybatisplus.annotation.TableId;
-
-import java.io.Serializable;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * <p>
@@ -71,27 +67,27 @@ public class Order implements Serializable {
     /**
      * 支付时间
      */
-    private LocalDate paymentTime;
+    private Date paymentTime;
 
     /**
      * 发货时间
      */
-    private LocalDate sendTime;
+    private Date sendTime;
 
     /**
      * 交易完成时间
      */
-    private LocalDate endTime;
+    private Date endTime;
 
     /**
      * 交易关闭时间
      */
-    private LocalDate closeTime;
+    private Date closeTime;
 
     /**
      * 创建时间
      */
-    private LocalDate createTime;
+    private Date createTime;
 
     /**
      * 标记删除，0表示删除，1表示存在

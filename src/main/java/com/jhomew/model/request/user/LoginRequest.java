@@ -1,11 +1,8 @@
 package com.jhomew.model.request.user;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 /**
  * @author Hxin
