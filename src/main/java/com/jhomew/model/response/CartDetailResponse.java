@@ -1,37 +1,28 @@
-package com.jhomew.entity;
-
-import java.math.BigDecimal;
-
-import com.baomidou.mybatisplus.annotation.IdType;
-
-import java.time.LocalDate;
-
-import com.baomidou.mybatisplus.annotation.TableId;
-
-import java.io.Serializable;
-import java.util.Date;
+package com.jhomew.model.response;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 /**
- * <p>
- *
- * </p>
- *
  * @author Hxin
- * @since 2021-10-10
+ * @version 1.0
+ * @since 2021/10/29 9:06 下午
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class Product implements Serializable {
+public class CartDetailResponse implements Serializable {
+    /**
+     * 购物车中商品的数量
+     */
+    private Integer count;
 
-    private static final long serialVersionUID = 1L;
+    //--------------------------------------
 
     /**
      * 商品id
      */
-    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
@@ -77,17 +68,15 @@ public class Product implements Serializable {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private LocalDate createTime;
 
     /**
      * 更新时间
      */
-    private Date updateTime;
+    private LocalDate updateTime;
 
     /**
      * 标记商品：1表示在售，0表示删除
      */
     private Integer state;
-
-
 }

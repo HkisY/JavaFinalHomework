@@ -37,7 +37,7 @@ public class LoginServiceImpl implements LoginService {
     private RedisTemplate<String, Long> redisTemplate;
 
     /**
-     * 注册服务
+     * 登录服务
      *
      * @param request 入参
      * @return LoginResponse
@@ -145,6 +145,11 @@ public class LoginServiceImpl implements LoginService {
         }
     }
 
+    /**
+     * 注销登录
+     * @param token token
+     * @return ResultModel
+     */
     @Override
     public ResultModel logOut(String token) {
         LoginUserDTO loginDto = null;

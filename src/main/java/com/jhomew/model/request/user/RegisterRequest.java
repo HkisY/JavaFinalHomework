@@ -1,4 +1,4 @@
-package com.jhomew.model.request;
+package com.jhomew.model.request.user;
 
 import lombok.Data;
 

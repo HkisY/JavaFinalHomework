@@ -14,9 +14,9 @@ public class RedisUtil {
     /**
      * 向redis中存储数据
      *
-     * @param redisTemplate
-     * @param redisKey
-     * @param obj
+     * @param redisTemplate RedisTemplate
+     * @param redisKey key
+     * @param obj Object
      */
     public static void save(RedisTemplate redisTemplate, String redisKey, Object obj) {
         //TODO 操作检查

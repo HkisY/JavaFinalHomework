@@ -3,13 +3,17 @@ package com.jhomew.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.jhomew.entity.User;
-import com.jhomew.model.request.LoginRequest;
-import com.jhomew.model.request.RegisterRequest;
+import com.jhomew.model.constant.CookieConstant;
+import com.jhomew.model.exception.LoginAndRegisterException;
+import com.jhomew.model.request.cart.CartMergeRequest;
+import com.jhomew.model.request.user.LoginRequest;
+import com.jhomew.model.request.user.RegisterRequest;
 import com.jhomew.model.response.LoginResponse;
 import com.jhomew.model.response.RegisterResponse;
 import com.jhomew.model.result.ResultModel;
 import com.jhomew.model.result.login.LoginModelRequest;
 import com.jhomew.model.result.login.RegisterModelRequest;
+import com.jhomew.service.businessService.cartService.CartOperateService;
 import com.jhomew.service.businessService.loginService.LoginService;
 import com.jhomew.service.daoService.UserService;
 import org.slf4j.Logger;
@@ -21,6 +25,8 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -44,61 +50,92 @@ public class UserController {
 
     @Autowired
     private LoginService loginService;
+    @Autowired
+    private CartOperateService cartOperateService;
 
     /**
      * 登出
+     *
      * @param token token
      * @return ResultModel
      */
     @GetMapping("/logOut")
     @ResponseBody
-    public ResultModel logOut(String token){
-        if (StringUtils.isBlank(token)){
-            return ResultModel.error("token is null or the parameter transformation is wrong");
+    public ResultModel logOut(String token) {
+        try {
+            if (StringUtils.isBlank(token)) {
+                throw new LoginAndRegisterException("token is null or the parameter transformation is wrong");
+            }
+        } catch (LoginAndRegisterException e) {
+            return ResultModel.error(e.getMessage());
         }
         return loginService.logOut(token);
     }
+
     /**
      * 验证是否登录，返回redis中的数据
+     *
      * @param token token
      * @return ResultModel<LoginResponse>
      */
     @GetMapping("/checkLogin")
     @ResponseBody
-    public ResultModel<LoginResponse> checkLogin(@RequestParam("token") String token){
-        if (StringUtils.isBlank(token)){
-            return ResultModel.error("token is null or the parameter transformation is wrong");
+    public ResultModel<LoginResponse> checkLogin(@RequestParam("token") String token) {
+        try {
+            if (StringUtils.isBlank(token)) {
+                throw new LoginAndRegisterException("token is null or the parameter transformation is wrong");
+            }
+        } catch (LoginAndRegisterException e) {
+            return ResultModel.error(e.getMessage());
         }
         return loginService.checkLogin(token);
     }
 
     /**
      * 登录
+     *
      * @param request LoginRequest
      * @return ResultModel<LoginResponse>
      */
     @PostMapping("/login")
     @ResponseBody
-    public ResultModel<LoginResponse> login(@RequestBody LoginRequest request) {
-        if (Objects.isNull(request) || StringUtils.isBlank(request.getUsername())) {
-//            try {
-//                LoginAndRegisterException exception = new LoginAndRegisterException("用户名为空");
-//            } catch (Exception e) {
-//                return ResultModel.error(e.getMessage());
-//            }
-            logger.debug("-----username is null or the frontside has incorrect parameter transformation");
-            return ResultModel.error("用户名为空或者前端传参出错");
-
+    public ResultModel<LoginResponse> login(@RequestBody LoginRequest request,
+                                            HttpServletRequest httpServletRequest) {
+        try {
+            if (Objects.isNull(request) || StringUtils.isBlank(request.getUsername())) {
+                throw new LoginAndRegisterException("-----username is null or the frontside has incorrect parameter transformation");
+            }
+        } catch (LoginAndRegisterException e) {
+            return ResultModel.error(e.getMessage());
         }
         //若后台接收前端参数需要多余填充数据，则进行实际赋值,如下注释行
         LoginModelRequest loginModelRequest = new LoginModelRequest();
         BeanUtils.copyProperties(request, loginModelRequest);
         //loginModelRequest.setImg("asdsadsda");
-        return loginService.login(loginModelRequest);
+        ResultModel<LoginResponse> resultModel = loginService.login(loginModelRequest);
+        //向后端传参cart_token && login_token
+        CartMergeRequest cartMergeRequest = new CartMergeRequest();
+
+        cartMergeRequest.setLoginToken(resultModel.getData().getToken());
+        Cookie[] cookies = httpServletRequest.getCookies();
+        if (Objects.nonNull(cookies)&&cookies.length>0){
+            for (Cookie cookie : cookies) {
+                if (CookieConstant.CART_TOKEN.equals(cookie.getName())) {
+                    cartMergeRequest.setCartToken(cookie.getValue());
+                    break;
+                }
+            }
+        }
+        //调用购物车的合并接口
+        cartOperateService.merge(cartMergeRequest);
+        //购物车在登录后要合并，到时候传参从cookie变为JWT token 故此处删除cookie
+
+        return resultModel;
     }
 
     /**
      * 注册
+     *
      * @param request RegisterRequest
      * @return ResultModel<RegisterResponse>
      */
@@ -106,13 +143,12 @@ public class UserController {
     @ResponseBody
     public ResultModel<RegisterResponse> register(@RequestBody RegisterRequest request) {
         //此三项可在前端校验，此处的作用为防止前端传参出错
-        if (Objects.isNull(request) || StringUtils.isBlank(request.getPassword())||StringUtils.isBlank(request.getUsername())) {
-//            try {
-//                LoginAndRegisterException exception = new LoginAndRegisterException("信息为空，可能整个参数为空，可能没有密码");
-//            } catch (Exception e) {
-//            }
-            logger.debug("-----message is null or the frontside has incorrect parameter transformation");
-            return ResultModel.error("信息为空，或参数传递出错");
+        try {
+            if (Objects.isNull(request) || StringUtils.isBlank(request.getPassword()) || StringUtils.isBlank(request.getUsername())) {
+                throw  new LoginAndRegisterException("-----message is null or the frontside has incorrect parameter transformation");
+            }
+        } catch (LoginAndRegisterException e) {
+            return ResultModel.error(e.getMessage());
         }
         RegisterModelRequest registerRequest = new RegisterModelRequest();
         BeanUtils.copyProperties(request, registerRequest);

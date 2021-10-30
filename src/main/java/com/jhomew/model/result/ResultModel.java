@@ -48,15 +48,15 @@ public class ResultModel<T> implements Serializable {
         return resultModel;
     }
 
-    public static ResultModel success(String message) {
-        resultModel.setSuccess(true);
-        //code : 200 成功
-        resultModel.setCode(200);
-        resultModel.setTimestamp(new Date().getTime());
-        resultModel.setMessage(message);
-        resultModel.setData(null);
-        return resultModel;
-    }
+//    public static ResultModel success(String message) {
+//        resultModel.setSuccess(true);
+//        //code : 200 成功
+//        resultModel.setCode(200);
+//        resultModel.setTimestamp(new Date().getTime());
+//        resultModel.setMessage(message);
+//        resultModel.setData(null);
+//        return resultModel;
+//    }
 
     public static ResultModel success(String message, Object obj) {
         resultModel.setSuccess(true);

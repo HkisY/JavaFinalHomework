@@ -34,5 +34,4 @@ public class RedisCacheConfig {
         template.setValueSerializer(new GenericToStringSerializer<Long>(Long.class));
         return template;
     }
-
 }
