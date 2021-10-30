@@ -2,7 +2,7 @@ package com.jhomew.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 
@@ -49,7 +49,7 @@ public class Category implements Serializable {
     /**
      * 创建时间
      */
-    private LocalDate createTime;
+    private Date createTime;
 
     /**
      * 标记删除，0表示删除，1表示存在

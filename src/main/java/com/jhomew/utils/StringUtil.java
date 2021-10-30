@@ -11,7 +11,7 @@ public class StringUtil {
     /**
      * 链接redis的key
      */
-    public static String tokenContact(String token) {
+    public static String tokenContact(String token){
         StringBuffer sb = new StringBuffer(RedisConstant.LOGIN_TOKEN_PRE);
         sb.append(token);
         return sb.toString();

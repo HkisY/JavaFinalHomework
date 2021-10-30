@@ -20,13 +20,13 @@ public class jjwtTest extends BaseTest {
 
 
     @Test
-    public void testCreateJWT() {
+    public void testCreateJWT(){
         JwtBuilder jwtBuilder = Jwts.builder().setId("1001")
                 .setSubject("老李")
                 .setIssuedAt(new Date())//签发时间
-                .signWith(SignatureAlgorithm.HS256, "hxinJava");//签名
+                .signWith(SignatureAlgorithm.HS256,"hxinJava");//签名
         //.claim存放键值对
         String token = jwtBuilder.compact();
-        logger.debug("---------------------" + token);
+        logger.debug("---------------------"+token);
     }
 }

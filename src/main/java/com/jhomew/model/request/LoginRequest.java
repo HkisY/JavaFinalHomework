@@ -4,8 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
-import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  * @author Hxin
@@ -13,9 +12,9 @@ import java.sql.Date;
  * @since 2021/10/16 8:39 下午
  */
 @Data
-public class LoginRequest implements Serializable {
+public class LoginRequest {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID=1L;
 
     private String username;
 

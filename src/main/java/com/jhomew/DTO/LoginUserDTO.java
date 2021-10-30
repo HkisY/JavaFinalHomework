@@ -2,11 +2,10 @@ package com.jhomew.DTO;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  * @author Hxin
@@ -15,7 +14,7 @@ import java.sql.Date;
  */
 @Data
 public class LoginUserDTO implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID=1L;
 
     /**
      * 主键
@@ -50,14 +49,12 @@ public class LoginUserDTO implements Serializable {
     /**
      * 创建时间
      */
-//    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    private Date createTime;
+    private LocalDate createTime;
 
     /**
      * 最后一次更新时间
      */
-//    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    private Date updateTime;
+    private LocalDate updateTime;
 
     /**
      * 标记，1表示存在，0表示删除

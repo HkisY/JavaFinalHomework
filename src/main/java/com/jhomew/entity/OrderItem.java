@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 
@@ -91,12 +91,12 @@ public class OrderItem implements Serializable {
     /**
      * 创建时间
      */
-    private LocalDate createTime;
+    private Date createTime;
 
     /**
      * 更新时间
      */
-    private LocalDate updateTime;
+    private Date updateTime;
 
     /**
      * 标记删除，0表示删除，1表示存在
