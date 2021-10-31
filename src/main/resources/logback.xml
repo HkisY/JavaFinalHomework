@@ -5,13 +5,13 @@
              ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
             <!--日志格式-->
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
     <!--对mapper启用trace级别日志-->
-    <looger name="com.jhomew.mapper" level="trace"></looger>
+    <looger name="com.jhomew.mapper" level="trace"/>
 
-    <looger name="com.jhomew.service" level="trace"></looger>
+    <looger name="com.jhomew.service" level="trace"/>
 
     <!--启动debug级别日志-->
     <root level="debug">

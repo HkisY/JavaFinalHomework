@@ -1,0 +1,5 @@
+此business Service目的是为了区分MybatisPlus的service层服务
+定义为遮蔽层,对Controller隐藏实现，操作持久层数据
+Controller层仅关心参数传递
+具体业务逻辑在此层实现，项目未分包故不定义各层接口及API
+具体开发注意注意@Service的添加

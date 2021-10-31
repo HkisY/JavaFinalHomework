@@ -13,7 +13,15 @@
     <!--annotation driver-->
     <mvc:annotation-driven/>
 
-    <!--json乱码问题-->
+    <!--解决跨域问题-->
+    <mvc:cors>
+        <mvc:mapping path="/**"
+                     allowed-origin-patterns="*"
+                     allowed-methods="POST, GET, OPTIONS, DELETE, PUT"
+                     allowed-headers="Access-Control-Allow-Headers, Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild,Access-Control-Allow-Origin"
+                     allow-credentials="true" />
+    </mvc:cors>
+<!--    &lt;!&ndash;json乱码问题&ndash;&gt;-->
 <!--    <mvc:annotation-driven>-->
 <!--        <mvc:message-converters>-->
 <!--            <bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
