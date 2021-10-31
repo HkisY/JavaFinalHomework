@@ -1,4 +1,4 @@
-package com.jhomew.model.result.GetProductList;
+package com.jhomew.model.result.GetList;
 
 import lombok.Data;
 
